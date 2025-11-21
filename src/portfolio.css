@@ -1,0 +1,58 @@
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#repos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+#repos li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid #333;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+#repos li:hover {
+    border-color: #646cff;
+    transform: translateY(-5px);
+}
+
+#repos a {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #646cff;
+}
+
+#repos p {
+    margin: 0.5rem 0 0 0;
+    flex-grow: 1;
+}
+
+.topic {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    margin: 0.5rem 0.2rem 0 0;
+    background-color: #333;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.homepage {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.5rem;
+    background-color: #646cff;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
