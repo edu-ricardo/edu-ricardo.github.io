@@ -41,9 +41,27 @@ header nav a:hover {
 #app {
   margin: 0 auto;
   padding: 2rem;
+  min-height: calc(100vh - 10rem); /* Adjust based on footer height */
 }
 
 ul {
   list-style: none;
   padding: 0;
+}
+
+footer {
+  background-color: #333;
+  padding: 2rem;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }

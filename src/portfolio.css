@@ -56,3 +56,49 @@ header {
     font-size: 0.8rem;
     text-decoration: none;
 }
+
+#live-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+#live-projects li {
+    padding: 1rem;
+    border: 1px solid #333;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#live-projects li:hover {
+    border-color: #646cff;
+    transform: translateY(-5px);
+}
+
+#live-projects a {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #646cff;
+}
+
+#live-projects p {
+    margin: 0.5rem 0;
+    flex-grow: 1;
+}
+
+.tags {
+    margin-top: 0.5rem;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    margin: 0 0.2rem 0.2rem 0;
+    background-color: #333;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
