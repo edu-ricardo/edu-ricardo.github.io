@@ -1,12 +1,13 @@
-import './style.css'
 import './portfolio.css'
+import './style.css'
 
 type TRepo = {
   name: string,
   html_url: string,
   description: string,
   homepage: string,
-  topics: string[]
+  topics: string[],
+  has_pages: boolean
 }
 
 const reposToIgnore = [
@@ -57,7 +58,12 @@ const renderProjetos = async () => {
     for (const repo of repos) {
       const repoItem = document.createElement('li');
       const topics = repo.topics.map((topic: any) => `<span class="topic">${topic}</span>`).join('');
-      const homepage = repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="homepage">page</a>` : '';
+      
+      let homepage = '' //repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="homepage">page</a>` : '';
+      if (repo.has_pages) {
+        homepage += `<a href="https://edu-ricardo.github.io/${repo.name}" target="_blank" class="homepage">pages</a>`
+      }
+
       repoItem.innerHTML = `
         <div>
           <a href="${repo.html_url}" target="_blank">
@@ -116,6 +122,28 @@ const routes = {
   '/projetos': renderProjetos,
   '/projetos-no-ar': renderProjetosNoAr
 };
+
+const setTheme = (theme: string) => {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+
+const lightModeToggle = document.querySelector<HTMLSpanElement>('#light-mode-toggle')!;
+const darkModeToggle = document.querySelector<HTMLSpanElement>('#dark-mode-toggle')!;
+
+lightModeToggle.addEventListener('click', () => setTheme('light'));
+darkModeToggle.addEventListener('click', () => setTheme('dark'));
+
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme) {
+  setTheme(savedTheme);
+} else if (prefersDark) {
+  setTheme('dark');
+} else {
+  setTheme('light');
+}
 
 const router = () => {
   const path = window.location.hash.slice(1) || '/';
